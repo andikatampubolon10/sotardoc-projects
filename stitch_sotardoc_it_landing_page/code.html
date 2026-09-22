@@ -1,0 +1,811 @@
+<!DOCTYPE html><html class="dark scroll-smooth" lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sotardoc - Solusi IT &amp; Transformasi Digital Bisnis</title>
+<!-- Fonts: Inter & Roboto -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            deepBlack: '#080808',
+            surfaceBlack: '#111111',
+            cardBg: '#0d0d0d',
+            offWhite: '#F3F4F6',
+            borderDark: '#27272A',
+            borderLightDark: '#3F3F46',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+            roboto: ['Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #080808;
+      color: #FFFFFF;
+      font-family: 'Roboto', sans-serif;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Inter', sans-serif;
+    }
+    /* Subtle grid pattern */
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+    /* Modal transitions */
+    .modal-backdrop {
+      transition: opacity 0.25s ease-out;
+    }
+    .modal-content-box {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-deepBlack text-white min-h-screen selection:bg-white selection:text-black">
+<!-- Background Ambient Glow & Grid -->
+<div class="fixed inset-0 bg-grid-pattern pointer-events-none opacity-60"></div>
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-white/[0.05] via-transparent to-transparent blur-3xl pointer-events-none"></div>
+<!-- Persistent Header / Navigation -->
+<header class="sticky top-0 z-40 w-full backdrop-blur-md bg-deepBlack/85 border-b border-borderDark/60">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center space-x-3 cursor-pointer">
+<div class="w-9 h-9 rounded-lg bg-white text-black font-bold flex items-center justify-center font-inter tracking-tighter text-lg shadow-sm shadow-white/20">
+          S
+        </div>
+<div class="flex flex-col">
+<span class="font-inter font-extrabold text-xl tracking-tight text-white flex items-center gap-1.5">
+            Sotardoc <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+</span>
+<span class="text-[10px] tracking-widest uppercase text-gray-400 font-inter font-medium -mt-1">Enterprise IT Solutions</span>
+</div>
+</div>
+<nav class="hidden md:flex items-center space-x-8 text-sm font-inter font-medium text-gray-300">
+<a class="hover:text-white transition-colors duration-200" href="#proyek">Proyek</a>
+<a class="hover:text-white transition-colors duration-200" href="#layanan">Layanan</a>
+<a class="hover:text-white transition-colors duration-200" href="#keunggulan">Tentang Kami</a>
+<a class="hover:text-white transition-colors duration-200" href="#kontak">Kontak</a>
+</nav>
+<div class="flex items-center space-x-4">
+<a class="px-5 py-2.5 rounded-md text-xs font-inter font-semibold uppercase tracking-wider bg-white text-black hover:bg-neutral-200 transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_25px_rgba(255,255,255,0.3)]" href="#kontak">
+          Konsultasi Gratis
+        </a>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+
+<!-- SECTION 1: PROJECT SHOWCASE (Top Section) -->
+<section class="py-20 px-6 max-w-7xl mx-auto relative" id="proyek">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+<div>
+<div class="text-xs uppercase tracking-widest text-gray-400 font-inter font-semibold mb-2 flex items-center gap-2">
+<span class="w-5 h-[1px] bg-white"></span> Portofolio Terpilih
+        </div>
+<h2 class="font-inter text-4xl text-white tracking-tight font-normal">Proyek Utama Kami</h2>
+</div>
+
+</div>
+<div class="flex flex-wrap items-center gap-3 mb-10" id="projectFilterContainer">
+<button class="project-filter-btn px-5 py-2 rounded-full font-inter font-medium text-sm transition-all duration-200 bg-white text-black shadow-sm" onclick="filterProjects('all', this)" type="button">Semua</button>
+<button class="project-filter-btn px-5 py-2 rounded-full font-inter font-medium text-sm transition-all duration-200 bg-transparent border border-neutral-800 text-gray-400 hover:text-white hover:border-neutral-600" onclick="filterProjects('ai', this)" type="button">AI / Machine Learning</button>
+<button class="project-filter-btn px-5 py-2 rounded-full font-inter font-medium text-sm transition-all duration-200 bg-transparent border border-neutral-800 text-gray-400 hover:text-white hover:border-neutral-600" onclick="filterProjects('cloud', this)" type="button">Cloud &amp; Architecture</button>
+<button class="project-filter-btn px-5 py-2 rounded-full font-inter font-medium text-sm transition-all duration-200 bg-transparent border border-neutral-800 text-gray-400 hover:text-white hover:border-neutral-600" onclick="filterProjects('ui-ux', this)" type="button">UI/UX Design</button>
+</div>
+<!-- Responsive Grid of Projects: 3 Desktop Columns in One Row (md:grid-cols-3) with gap-6 -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="projectsGrid">
+<!-- Card 1: AgriFlow-ML (AI) -->
+<div class="group bg-cardBg border border-gray-800 rounded-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:border-gray-600 hover:shadow-[0_12px_32px_rgba(255,255,255,0.06)] relative overflow-hidden project-card" data-category="ai">
+<div>
+<div class="aspect-video w-full rounded-lg bg-[#18181b] border border-borderDark/60 mb-6 flex flex-col items-center justify-center relative overflow-hidden group-hover:border-gray-500 transition-colors">
+<svg class="w-full h-full opacity-35 transition-transform duration-500 group-hover:scale-105" fill="none" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 140 C80 60, 160 160, 240 80 L300 110" stroke="#FFFFFF" stroke-dasharray="4 4" stroke-width="2"></path>
+<circle cx="80" cy="95" fill="#FFFFFF" r="5"></circle>
+<circle cx="160" cy="130" fill="#FFFFFF" r="5"></circle>
+<circle cx="240" cy="80" fill="#FFFFFF" r="6"></circle>
+<rect fill="#27272A" height="40" rx="6" stroke="#3F3F46" stroke-width="1.5" width="90" x="210" y="25"></rect>
+<path d="M225 45 L255 45 M225 53 L285 53" stroke="#FFFFFF" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<span class="text-[11px] font-inter font-mono text-gray-300">MODEL-PREDIKSI v2.4</span>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cpu" aria-hidden="true" class="lucide lucide-cpu absolute top-4 right-4 w-5 h-5 text-gray-400"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg>
+</div>
+<h3 class="font-inter text-xl text-white mb-2 tracking-tight group-hover:text-offWhite transition-colors font-normal">
+            AgriFlow-ML
+          </h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">Python</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">RNN</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">React</span>
+</div>
+<p class="font-roboto text-sm text-gray-400 leading-relaxed font-normal mb-6">
+            Sistem ekosistem digital rantai pasok pertanian (Machine Learning).
+          </p>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg font-inter text-xs font-semibold uppercase tracking-wider text-white border border-white/80 bg-transparent hover:bg-white hover:text-black transition-all duration-200 flex items-center justify-center gap-2" onclick="openProjectModal(0)">
+<span class="">Lihat Detail</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="external-link" aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</button>
+</div>
+<!-- Card 2: VisionScan OCR & KYC (AI) -->
+<div class="group bg-cardBg border border-gray-800 rounded-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:border-gray-600 hover:shadow-[0_12px_32px_rgba(255,255,255,0.06)] relative overflow-hidden project-card" data-category="ai">
+<div>
+<div class="aspect-video w-full rounded-lg bg-[#18181b] border border-borderDark/60 mb-6 flex flex-col items-center justify-center relative overflow-hidden group-hover:border-gray-500 transition-colors">
+<svg class="w-full h-full opacity-35 transition-transform duration-500 group-hover:scale-105" fill="none" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#121212" height="120" rx="6" stroke="#FFFFFF" stroke-width="1.5" width="180" x="70" y="30"></rect>
+<rect fill="#27272A" height="55" rx="3" stroke="#71717A" width="45" x="85" y="45"></rect>
+<circle cx="107" cy="65" r="10" stroke="#FFFFFF" stroke-width="1.2"></circle>
+<path d="M94 88 C94 80, 120 80, 120 88" fill="none" stroke="#FFFFFF" stroke-width="1.2"></path>
+<rect fill="#FFFFFF" height="8" rx="2" width="90" x="145" y="48"></rect>
+<rect fill="#3F3F46" height="6" rx="2" width="70" x="145" y="62"></rect>
+<rect fill="#3F3F46" height="6" rx="2" width="80" x="145" y="74"></rect>
+<line stroke="#10B981" stroke-dasharray="3 3" stroke-width="1.5" x1="60" x2="260" y1="90" y2="90"></line>
+<rect fill="#1E1E24" height="22" rx="3" stroke="#3F3F46" width="150" x="85" y="112"></rect>
+<path d="M95 123 H150 M170 123 H225" stroke="#10B981" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+<span class="text-[11px] font-inter font-mono text-gray-300">BIOMETRIC FAST-INFERENCE</span>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="scan-face" aria-hidden="true" class="lucide lucide-scan-face absolute top-4 right-4 w-5 h-5 text-gray-400"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><path d="M9 9h.01"></path><path d="M15 9h.01"></path></svg>
+</div>
+<h3 class="font-inter text-xl text-white mb-2 tracking-tight group-hover:text-offWhite transition-colors font-normal">
+            VisionScan OCR &amp; KYC
+          </h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">PyTorch</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">FastAPI</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">OpenCV</span>
+</div>
+<p class="font-roboto text-sm text-gray-400 leading-relaxed font-normal mb-6">
+            Ekstraksi identitas otomatis &amp; verifikasi biometrik fraud detection berkecepatan sub-detik.
+          </p>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg font-inter text-xs font-semibold uppercase tracking-wider text-white border border-white/80 bg-transparent hover:bg-white hover:text-black transition-all duration-200 flex items-center justify-center gap-2" onclick="openProjectModal(1)">
+<span class="">Lihat Detail</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="external-link" aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</button>
+</div>
+<!-- Card 3: MediTrack Transformation (Cloud) -->
+<div class="group bg-cardBg border border-gray-800 rounded-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:border-gray-600 hover:shadow-[0_12px_32px_rgba(255,255,255,0.06)] relative overflow-hidden project-card" data-category="cloud">
+<div>
+<div class="aspect-video w-full rounded-lg bg-[#18181b] border border-borderDark/60 mb-6 flex flex-col items-center justify-center relative overflow-hidden group-hover:border-gray-500 transition-colors">
+<svg class="w-full h-full opacity-35 transition-transform duration-500 group-hover:scale-105" fill="none" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#27272A" height="70" rx="4" stroke="#FFFFFF" stroke-width="1.5" width="60" x="30" y="55"></rect>
+<rect fill="#18181b" height="45" rx="4" stroke="#A1A1AA" stroke-width="1.5" width="60" x="130" y="35"></rect>
+<rect fill="#18181b" height="45" rx="4" stroke="#A1A1AA" stroke-width="1.5" width="60" x="130" y="95"></rect>
+<rect fill="#27272A" height="50" rx="4" stroke="#FFFFFF" stroke-width="1.5" width="60" x="230" y="65"></rect>
+<path d="M90 90 L130 55 M90 90 L130 115 M190 55 L230 90 M190 115 L230 90" stroke="#FFFFFF" stroke-dasharray="3 3" stroke-width="1.5"></path>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+<span class="text-[11px] font-inter font-mono text-gray-300">MICROSERVICES MIGRATION</span>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="network" aria-hidden="true" class="lucide lucide-network absolute top-4 right-4 w-5 h-5 text-gray-400"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>
+</div>
+<h3 class="font-inter text-xl text-white mb-2 tracking-tight group-hover:text-offWhite transition-colors font-normal">
+            MediTrack Transformation
+          </h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">Node.js</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">Microservices</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">Docker</span>
+</div>
+<p class="font-roboto text-sm text-gray-400 leading-relaxed font-normal mb-6">
+            Migrasi arsitektur monolitik untuk sistem deteksi awal Posyandu skala nasional.
+          </p>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg font-inter text-xs font-semibold uppercase tracking-wider text-white border border-white/80 bg-transparent hover:bg-white hover:text-black transition-all duration-200 flex items-center justify-center gap-2" onclick="openProjectModal(2)">
+<span class="">Lihat Detail</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="external-link" aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</button>
+</div>
+<!-- Card 4: BankCore Kubernetes Migration (Cloud) -->
+<div class="group bg-cardBg border border-gray-800 rounded-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:border-gray-600 hover:shadow-[0_12px_32px_rgba(255,255,255,0.06)] relative overflow-hidden project-card" data-category="cloud">
+<div>
+<div class="aspect-video w-full rounded-lg bg-[#18181b] border border-borderDark/60 mb-6 flex flex-col items-center justify-center relative overflow-hidden group-hover:border-gray-500 transition-colors">
+<svg class="w-full h-full opacity-35 transition-transform duration-500 group-hover:scale-105" fill="none" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#18181B" height="120" rx="6" stroke="#71717A" stroke-width="1.5" width="75" x="25" y="30"></rect>
+<rect fill="#27272A" height="20" rx="3" stroke="#FFFFFF" stroke-width="1" width="55" x="35" y="45"></rect>
+<rect fill="#27272A" height="20" rx="3" stroke="#FFFFFF" stroke-width="1" width="55" x="35" y="75"></rect>
+<rect fill="#27272A" height="20" rx="3" stroke="#FFFFFF" stroke-width="1" width="55" x="35" y="105"></rect>
+<path d="M100 90 H135" stroke="#FFFFFF" stroke-dasharray="3 3" stroke-width="2"></path>
+<rect fill="#1E1E24" height="90" rx="6" stroke="#FFFFFF" stroke-width="1.5" width="70" x="135" y="45"></rect>
+<circle cx="170" cy="75" r="16" stroke="#38BDF8" stroke-width="2"></circle>
+<path d="M170 65 V85 M160 75 H180" stroke="#38BDF8" stroke-width="1.5"></path>
+<rect fill="#27272A" height="15" rx="2" width="50" x="145" y="105"></rect>
+<path d="M205 70 H235 M205 110 H235" stroke="#FFFFFF" stroke-width="1.5"></path>
+<rect fill="#18181B" height="32" rx="4" stroke="#71717A" width="65" x="235" y="55"></rect>
+<rect fill="#18181B" height="32" rx="4" stroke="#71717A" width="65" x="235" y="95"></rect>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+<span class="text-[11px] font-inter font-mono text-gray-300">ZERO-DOWNTIME RE-PLATFORM</span>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="boxes" aria-hidden="true" class="lucide lucide-boxes absolute top-4 right-4 w-5 h-5 text-gray-400"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"></path><path d="m7 16.5-4.74-2.85"></path><path d="m7 16.5 5-3"></path><path d="M7 16.5v5.17"></path><path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z"></path><path d="m17 16.5-5-3"></path><path d="m17 16.5 4.74-2.85"></path><path d="M17 16.5v5.17"></path><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"></path><path d="M12 8 7.26 5.15"></path><path d="m12 8 4.74-2.85"></path><path d="M12 13.5V8"></path></svg>
+</div>
+<h3 class="font-inter text-xl text-white mb-2 tracking-tight group-hover:text-offWhite transition-colors font-normal">
+            BankCore Kubernetes Migration
+          </h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">Go</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">K8s</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">Terraform</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">AWS</span>
+</div>
+<p class="font-roboto text-sm text-gray-400 leading-relaxed font-normal mb-6">
+            Re-platforming sistem core perbankan dengan zero-downtime &amp; auto-scaling multi-region.
+          </p>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg font-inter text-xs font-semibold uppercase tracking-wider text-white border border-white/80 bg-transparent hover:bg-white hover:text-black transition-all duration-200 flex items-center justify-center gap-2" onclick="openProjectModal(3)">
+<span class="">Lihat Detail</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="external-link" aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</button>
+</div>
+<!-- Card 5: Parkarejo (UI/UX) -->
+<div class="group bg-cardBg border border-gray-800 rounded-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:border-gray-600 hover:shadow-[0_12px_32px_rgba(255,255,255,0.06)] relative overflow-hidden project-card" data-category="ui-ux">
+<div>
+<div class="aspect-video w-full rounded-lg bg-[#18181b] border border-borderDark/60 mb-6 flex flex-col items-center justify-center relative overflow-hidden group-hover:border-gray-500 transition-colors">
+<svg class="w-full h-full opacity-35 transition-transform duration-500 group-hover:scale-105" fill="none" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+<rect height="130" rx="8" stroke="#FFFFFF" stroke-width="1.5" width="240" x="40" y="25"></rect>
+<line stroke="#3F3F46" stroke-width="1.5" x1="40" x2="280" y1="55" y2="55"></line>
+<rect fill="#27272A" height="70" rx="4" width="70" x="55" y="70"></rect>
+<rect fill="#3F3F46" height="18" rx="3" width="125" x="140" y="70"></rect>
+<rect fill="#27272A" height="12" rx="3" width="100" x="140" y="96"></rect>
+<rect fill="#FFFFFF" height="20" rx="4" width="60" x="140" y="116"></rect>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-violet-400"></span>
+<span class="text-[11px] font-inter font-mono text-gray-300">URBAN MOBILITY DESIGN SYSTEM</span>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layout" aria-hidden="true" class="lucide lucide-layout absolute top-4 right-4 w-5 h-5 text-gray-400"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+</div>
+<h3 class="font-inter text-xl text-white mb-2 tracking-tight group-hover:text-offWhite transition-colors font-normal">
+            Parkarejo
+          </h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">Figma</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">UI/UX</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">Design System</span>
+</div>
+<p class="font-roboto text-sm text-gray-400 leading-relaxed font-normal mb-6">
+            Prototipe &amp; design system sistem parkir digital untuk efisiensi mobilitas urban.
+          </p>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg font-inter text-xs font-semibold uppercase tracking-wider text-white border border-white/80 bg-transparent hover:bg-white hover:text-black transition-all duration-200 flex items-center justify-center gap-2" onclick="openProjectModal(4)">
+<span class="">Lihat Detail</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="external-link" aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</button>
+</div>
+<!-- Card 6: NexaPay FinTech SuperApp (UI/UX) -->
+<div class="group bg-cardBg border border-gray-800 rounded-xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:border-gray-600 hover:shadow-[0_12px_32px_rgba(255,255,255,0.06)] relative overflow-hidden project-card" data-category="ui-ux">
+<div>
+<div class="aspect-video w-full rounded-lg bg-[#18181b] border border-borderDark/60 mb-6 flex flex-col items-center justify-center relative overflow-hidden group-hover:border-gray-500 transition-colors">
+<svg class="w-full h-full opacity-35 transition-transform duration-500 group-hover:scale-105" fill="none" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+<!-- Mobile Phone Mockups Minimalist -->
+<rect fill="#121212" height="140" rx="12" stroke="#FFFFFF" stroke-width="1.5" width="75" x="75" y="20"></rect>
+<rect fill="#3F3F46" height="5" rx="2" width="40" x="92" y="26"></rect>
+<rect fill="#27272A" height="28" rx="6" stroke="#71717A" width="55" x="85" y="38"></rect>
+<rect fill="#3F3F46" height="10" rx="3" width="55" x="85" y="74"></rect>
+<circle cx="94" cy="98" fill="#FFFFFF" r="6"></circle>
+<circle cx="112" cy="98" fill="#3F3F46" r="6"></circle>
+<circle cx="130" cy="98" fill="#3F3F46" r="6"></circle>
+<rect fill="#1E1E24" height="35" rx="4" width="55" x="85" y="112"></rect>
+<!-- Tablet / Dashboard preview -->
+<rect fill="#18181B" height="110" rx="8" stroke="#71717A" stroke-width="1.2" width="95" x="170" y="35"></rect>
+<line stroke="#3F3F46" stroke-width="1" x1="170" x2="265" y1="55" y2="55"></line>
+<rect fill="#27272A" height="25" rx="4" width="75" x="180" y="65"></rect>
+<path d="M185 82 L198 73 L212 78 L228 69 L245 74" fill="none" stroke="#A78BFA" stroke-width="1.5"></path>
+<rect fill="#27272A" height="32" rx="3" width="35" x="180" y="100"></rect>
+<rect fill="#27272A" height="32" rx="3" width="35" x="220" y="100"></rect>
+</svg>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-violet-400"></span>
+<span class="text-[11px] font-inter font-mono text-gray-300">FINTECH APP REDESIGN</span>
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="smartphone" aria-hidden="true" class="lucide lucide-smartphone absolute top-4 right-4 w-5 h-5 text-gray-400"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
+</div>
+<h3 class="font-inter text-xl text-white mb-2 tracking-tight group-hover:text-offWhite transition-colors font-normal">
+            NexaPay FinTech SuperApp
+          </h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">Figma</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">Prototyping</span>
+<span class="px-2.5 py-0.5 rounded-full border border-gray-700 bg-neutral-900/80 text-xs font-inter font-medium text-gray-300">Usability Testing</span>
+</div>
+<p class="font-roboto text-sm text-gray-400 leading-relaxed font-normal mb-6">
+            Redesain end-to-end aplikasi perbankan digital generasi baru dengan peningkatan konversi transaksi 38%.
+          </p>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg font-inter text-xs font-semibold uppercase tracking-wider text-white border border-white/80 bg-transparent hover:bg-white hover:text-black transition-all duration-200 flex items-center justify-center gap-2" onclick="openProjectModal(5)">
+<span class="">Lihat Detail</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="external-link" aria-hidden="true" class="lucide lucide-external-link w-3.5 h-3.5"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>
+</button>
+</div>
+</div>
+</section>
+<!-- Value Proposition & Expertise Strip -->
+<section class="py-16 px-6 max-w-7xl mx-auto" id="layanan">
+<div class="bg-surfaceBlack/60 border border-borderDark rounded-2xl p-8 md:p-12 relative overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+<div class="space-y-3">
+<div class="w-10 h-10 rounded-lg bg-neutral-900 border border-gray-700 flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" aria-hidden="true" class="lucide lucide-shield-check w-5 h-5 text-white"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+</div>
+<h4 class="font-inter text-lg text-white font-normal">Rekayasa Skala Enterprise</h4>
+<p class="font-roboto text-sm text-gray-400 leading-relaxed">
+            Kode berstandar industri dengan pengujian otomatis, observabilitas real-time, dan arsitektur modular yang adaptif terhadap pertumbuhan transaksi.
+          </p>
+</div>
+<div class="space-y-3">
+<div class="w-10 h-10 rounded-lg bg-neutral-900 border border-gray-700 flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" aria-hidden="true" class="lucide lucide-sparkles w-5 h-5 text-white"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+</div>
+<h4 class="font-inter text-lg text-white font-normal">Integrasi AI &amp; Machine Learning</h4>
+<p class="font-roboto text-sm text-gray-400 leading-relaxed">
+            Transformasi data mentah perusahaan menjadi analitik prediktif dan pipeline otomatisasi cerdas yang memberikan keunggulan kompetitif.
+          </p>
+</div>
+<div class="space-y-3">
+<div class="w-10 h-10 rounded-lg bg-neutral-900 border border-gray-700 flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zap" aria-hidden="true" class="lucide lucide-zap w-5 h-5 text-white"><path d="M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z"></path></svg>
+</div>
+<h4 class="font-inter text-lg text-white font-normal">Delivery Tangkas &amp; Transparan</h4>
+<p class="font-roboto text-sm text-gray-400 leading-relaxed">
+            Metodologi kerja terstruktur, dokumentasi arsitektur komprehensif, dan komunikasi intensif dengan pelaporan sprint berkala.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: CONTACT FORM (Bottom Section - generous mt-24) -->
+<section class="mt-24 py-20 px-6 max-w-7xl mx-auto" id="kontak">
+<div class="max-w-3xl mx-auto">
+<div class="text-center mb-12">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-800 bg-neutral-900 text-xs font-inter font-medium text-gray-300 mb-4">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" aria-hidden="true" class="lucide lucide-mail w-3.5 h-3.5"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+<span class="">Konsultasi Proyek &amp; Penawaran Jasa</span>
+</div>
+<h2 class="font-inter text-3xl md:text-4xl text-white tracking-tight mb-4 font-normal">
+          Hubungi Kami untuk Pemesanan Jasa
+        </h2>
+<p class="font-roboto text-gray-400 text-base leading-relaxed max-w-xl mx-auto font-normal">
+          Diskusikan tantangan teknologi organisasi Anda bersama tim engineering Sotardoc. Kami akan merespon dalam waktu maksimal 1x24 jam kerja.
+        </p>
+</div>
+<!-- Contact Form Component -->
+<form class="bg-cardBg border border-gray-800 rounded-2xl p-8 md:p-10 shadow-2xl relative" id="contactForm" onsubmit="handleFormSubmit(event)">
+<div class="space-y-6">
+<!-- Nama Lengkap -->
+<div>
+<label class="block font-inter text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2" for="fullName">
+              Nama Lengkap <span class="text-white font-bold">*</span>
+</label>
+<input class="w-full bg-neutral-900 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 font-roboto text-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-200" id="fullName" placeholder="Contoh: Budi Pratama" required="" type="text">
+</div>
+<!-- Email / WhatsApp -->
+<div>
+<label class="block font-inter text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2" for="contactInfo">
+              Email / WhatsApp <span class="text-white font-bold">*</span>
+</label>
+<input class="w-full bg-neutral-900 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 font-roboto text-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-200" id="contactInfo" placeholder="budi@perusahaan.co.id atau +62 812-XXXX-XXXX" required="" type="text">
+</div>
+<!-- Tipe Layanan (Dropdown) -->
+<div>
+<label class="block font-inter text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2" for="serviceType">
+              Tipe Layanan <span class="text-white font-bold">*</span>
+</label>
+<div class="relative">
+<select class="w-full bg-neutral-900 border border-gray-700 rounded-lg px-4 py-3 text-white font-roboto text-sm appearance-none focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-200 cursor-pointer" id="serviceType" required="">
+<option class="text-gray-500" disabled="" selected="" value="">Pilih salah satu spesialisasi layanan</option>
+<option value="ml-ai">Pengembangan Machine Learning &amp; AI Terapan</option>
+<option value="cloud-microservices">Arsitektur Microservices &amp; Migrasi Cloud</option>
+<option value="ui-ux">Desain UI/UX &amp; Riset Prototipe Digital</option>
+<option value="custom-dev">Pengembangan Aplikasi Web &amp; Mobile Khusus</option>
+<option value="consulting">Audit Arsitektur &amp; Konsultasi IT Enterprise</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" aria-hidden="true" class="lucide lucide-chevron-down w-4 h-4"><path d="m6 9 6 6 6-6"></path></svg>
+</div>
+</div>
+</div>
+<!-- Detail Proyek (Textarea) -->
+<div>
+<label class="block font-inter text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2" for="projectDetails">
+              Detail Proyek <span class="text-white font-bold">*</span>
+</label>
+<textarea class="w-full bg-neutral-900 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 font-roboto text-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all duration-200 resize-y" id="projectDetails" placeholder="Jelaskan kebutuhan fungsional, estimasi tenggat waktu, atau kendala teknis sistem saat ini..." required="" rows="4"></textarea>
+</div>
+<!-- Submit Notification Banner (Hidden initially) -->
+<div class="hidden p-4 rounded-lg bg-neutral-900 border border-white text-sm text-offWhite font-roboto flex items-start gap-3" id="formSuccessAlert">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" aria-hidden="true" class="lucide lucide-check-circle w-5 h-5 text-white flex-shrink-0 mt-0.5"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+<div>
+<p class="font-inter font-bold text-white">Permintaan Berhasil Terkirim</p>
+<p class="text-xs text-gray-300 mt-0.5">Terima kasih atas kepercayaan Anda. Tim rekayasa kami akan segera mempelajari ringkasan proyek ini dan menghubungi Anda.</p>
+</div>
+</div>
+<!-- Submit Button: Full width, background pure white (#FFFFFF), text black (#000000), font-bold, py-3 -->
+<button class="w-full py-3 bg-[#FFFFFF] text-[#000000] font-inter font-bold text-sm tracking-wide rounded-lg hover:bg-neutral-200 active:scale-[0.99] transition-all duration-200 shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2" id="submitBtn" type="submit">
+<span class="">Kirim Pesan Pemesanan Jasa</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="send" aria-hidden="true" class="lucide lucide-send w-4 h-4"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
+</button>
+<p class="text-[11px] text-gray-500 text-center font-roboto">
+            Data Anda terlindungi oleh kebijakan kerahasiaan &amp; Non-Disclosure Agreement (NDA) standar industri.
+          </p>
+</div>
+</form>
+</div>
+</section>
+<!-- Footer -->
+<footer class="mt-20 border-t border-borderDark/80 py-12 px-6 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-gray-400">
+<div class="flex items-center space-x-3">
+<span class="w-7 h-7 rounded bg-white text-black font-bold flex items-center justify-center text-sm font-inter">S</span>
+<span class="font-inter font-bold text-white">Sotardoc IT Solutions</span>
+</div>
+<p class="font-roboto text-xs text-gray-500">
+        © 2025 Sotardoc Technologies. Hak Cipta Dilindungi Undang-Undang.
+      </p>
+<div class="flex space-x-6 text-xs font-inter">
+<a class="hover:text-white transition-colors" href="#">Ketentuan Layanan</a>
+<a class="hover:text-white transition-colors" href="#">Privasi</a>
+<a class="hover:text-white transition-colors" href="#">Dokumentasi API</a>
+</div>
+</div>
+</footer>
+<!-- INTERACTIVE PROJECT MODAL (Detail View) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 hidden" id="projectModal">
+<!-- Dark overlay backdrop -->
+<div class="fixed inset-0 bg-black/85 backdrop-blur-md modal-backdrop opacity-0" id="modalOverlay" onclick="closeProjectModal()"></div>
+<!-- Centered Modal Box (bg-neutral-900, border border-gray-700) -->
+<div class="relative z-10 w-full max-w-2xl bg-neutral-900 border border-gray-700 rounded-2xl shadow-2xl p-6 md:p-8 overflow-hidden modal-content-box opacity-0 scale-95 max-h-[90vh] overflow-y-auto" id="modalBox">
+<!-- 'X' Close Button -->
+<button aria-label="Tutup Modal" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-neutral-800 border border-gray-700 hover:border-white text-gray-300 hover:text-white flex items-center justify-center transition-colors" onclick="closeProjectModal()">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-4 h-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+</button>
+<!-- Large Image Placeholder (aspect-video) with technical diagram -->
+<div class="aspect-video w-full rounded-xl bg-deepBlack border border-borderDark overflow-hidden mb-6 relative flex items-center justify-center">
+<div class="w-full h-full flex items-center justify-center" id="modalGraphicContainer">
+<!-- Dynamic vector graphic injected via JS -->
+</div>
+<div class="absolute bottom-3 left-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-white"></span>
+<span class="text-xs font-inter font-mono text-gray-300" id="modalCategoryBadge">ARCHITECTURE DEMO</span>
+</div>
+</div>
+<!-- Project Title -->
+<div class="flex items-center gap-3 mb-2">
+<h3 class="font-inter text-2xl md:text-3xl font-bold text-white tracking-tight" id="modalProjectTitle">
+          Nama Proyek
+        </h3>
+</div>
+<!-- Tech Stack Badges inside Modal -->
+<div class="flex flex-wrap gap-2 mb-4" id="modalTechStack">
+<!-- Rendered via JS -->
+</div>
+<!-- Detailed Description explaining features (Roboto, text-gray-300) -->
+<div class="mb-8">
+<h4 class="font-inter text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Ikhtisar &amp; Fitur Utama</h4>
+<p class="font-roboto text-sm md:text-base text-gray-300 leading-relaxed font-normal" id="modalProjectDesc">
+          Deskripsi mendalam mengenai fitur dan kapabilitas teknis proyek.
+        </p>
+</div>
+<!-- Action Buttons (Flex row) -->
+<div class="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-gray-800">
+<!-- 1. "Kunjungi Web" -->
+<a class="w-full sm:w-auto flex-1 py-3 px-5 rounded-lg bg-white text-black font-inter font-bold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-all text-center flex items-center justify-center gap-2" href="#demo" onclick="event.preventDefault(); alert('Mengarahkan ke live staging environment proyek...');">
+<span class="">Kunjungi Web</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="globe" aria-hidden="true" class="lucide lucide-globe w-4 h-4"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+</a>
+<!-- 2. "Source Code" -->
+<a class="w-full sm:w-auto flex-1 py-3 px-5 rounded-lg border border-white text-white font-inter font-bold text-xs uppercase tracking-wider bg-transparent hover:bg-white hover:text-black transition-all text-center flex items-center justify-center gap-2" href="#code" onclick="event.preventDefault(); alert('Membuka repositori GitHub terverifikasi...');">
+<span class="">Source Code</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="code-2" aria-hidden="true" class="lucide lucide-code-2 w-4 h-4"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<!-- Interactive Logic & State Management -->
+<script>
+    // Project Dataset (Updated with complete high quality projects)
+    const projectsData = [
+      {
+        title: "AgriFlow-ML",
+        stack: ["Python", "RNN", "React", "TensorFlow", "FastAPI"],
+        category: "Machine Learning & Smart Agriculture",
+        shortDesc: "Sistem ekosistem digital rantai pasok pertanian (Machine Learning).",
+        fullDesc: "AgriFlow-ML adalah platform berbasis kecerdasan buatan terapan yang memprediksi fluktuasi panen dan optimasi distribusi komoditas pangan secara real-time. Dengan memanfaatkan arsitektur Recurrent Neural Network (RNN) serta integrasi visualisasi data React berkecepatan tinggi, sistem ini memangkas tingkat pembusukan hasil tani sebesar 34% pada fase distribusi antar-provinsi.",
+        svgGraphic: `
+          <svg class="w-full h-full opacity-60" viewBox="0 0 600 338" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="338" fill="#0A0A0A"/>
+            <path d="M50 260 Q180 80, 320 220 T550 120" stroke="#FFFFFF" stroke-width="2.5" fill="none"/>
+            <path d="M50 290 Q200 160, 350 270 T550 170" stroke="#52525B" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+            <circle cx="180" cy="140" r="7" fill="#FFFFFF"/>
+            <circle cx="320" cy="220" r="7" fill="#FFFFFF"/>
+            <circle cx="450" cy="140" r="7" fill="#FFFFFF"/>
+            <rect x="380" y="50" width="180" height="65" rx="8" fill="#18181B" stroke="#3F3F46" stroke-width="1.5"/>
+            <text x="400" y="78" fill="#FFFFFF" font-family="Inter" font-weight="700" font-size="13">Akurasi Model: 96.4%</text>
+            <text x="400" y="98" fill="#A1A1AA" font-family="Roboto" font-size="11">RNN Sequential Pipeline</text>
+          </svg>
+        `
+      },
+      {
+        title: "VisionScan OCR & KYC",
+        stack: ["PyTorch", "FastAPI", "OpenCV", "Docker", "ONNX"],
+        category: "Computer Vision & Identity Fraud Detection",
+        shortDesc: "Ekstraksi identitas otomatis & verifikasi biometrik fraud detection berkecepatan sub-detik.",
+        fullDesc: "VisionScan OCR & KYC merupakan pipeline computer vision cerdas untuk ekstraksi dokumen identitas nasional (KTP/Passport) dan pencocokan biometrik wajah secara instan. Menggunakan model deep learning terkuantisasi (ONNX Runtime) yang memproses inferensi dalam <450ms dengan akurasi pengenalan pola teks dan liveness detection mencapai 99.2%, mengurangi fraud onboarding hingga 85%.",
+        svgGraphic: `
+          <svg class="w-full h-full opacity-60" viewBox="0 0 600 338" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="338" fill="#0A0A0A"/>
+            <rect x="80" y="50" width="280" height="190" rx="10" stroke="#FFFFFF" stroke-width="2" fill="#141416"/>
+            <rect x="105" y="75" width="70" height="85" rx="6" fill="#27272A" stroke="#71717A"/>
+            <circle cx="140" cy="105" r="16" stroke="#FFFFFF" stroke-width="2"/>
+            <path d="M120 142 C120 130, 160 130, 160 142" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+            <rect x="195" y="80" width="140" height="12" rx="3" fill="#FFFFFF"/>
+            <rect x="195" y="102" width="110" height="9" rx="3" fill="#52525B"/>
+            <rect x="195" y="120" width="125" height="9" rx="3" fill="#52525B"/>
+            <line x1="70" y1="145" x2="370" y2="145" stroke="#10B981" stroke-width="2" stroke-dasharray="4 4"/>
+            <rect x="390" y="70" width="160" height="150" rx="10" fill="#18181B" stroke="#3F3F46" stroke-width="1.5"/>
+            <text x="410" y="105" fill="#10B981" font-family="Inter" font-weight="700" font-size="13">✓ LIVENESS PASS</text>
+            <text x="410" y="130" fill="#FFFFFF" font-family="Inter" font-weight="600" font-size="12">Latency: 380ms</text>
+            <text x="410" y="152" fill="#A1A1AA" font-family="Roboto" font-size="11">Confidence: 99.4%</text>
+            <rect x="410" y="175" width="120" height="24" rx="4" fill="#27272A"/>
+            <text x="425" y="191" fill="#FFFFFF" font-family="Inter" font-size="11">PyTorch / ONNX</text>
+          </svg>
+        `
+      },
+      {
+        title: "MediTrack Transformation",
+        stack: ["Node.js", "Microservices", "Docker", "Kafka", "PostgreSQL"],
+        category: "Healthcare Infrastructure Migration",
+        shortDesc: "Migrasi arsitektur monolitik untuk sistem deteksi awal Posyandu skala nasional.",
+        fullDesc: "MediTrack merupakan perombakan infrastruktur menyeluruh dari sistem legacy menjadi arsitektur microservices terdistribusi. Didesain untuk mengakomodasi lebih dari 12.000 titik Posyandu pedesaan dengan toleransi latensi jaringan rendah dan offline-sync capability, memungkinkan deteksi dini stunting dan pemantauan gizi anak secara akurat tanpa bottleneck server.",
+        svgGraphic: `
+          <svg class="w-full h-full opacity-60" viewBox="0 0 600 338" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="338" fill="#0A0A0A"/>
+            <rect x="70" y="110" width="110" height="120" rx="8" fill="#18181B" stroke="#FFFFFF" stroke-width="2"/>
+            <text x="92" y="175" fill="#FFFFFF" font-family="Inter" font-weight="700" font-size="14">Gateway</text>
+            <path d="M180 170 L260 100 M180 170 L260 170 M180 170 L260 240" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4 4"/>
+            <rect x="260" y="70" width="120" height="60" rx="6" fill="#18181B" stroke="#71717A" stroke-width="1.5"/>
+            <text x="280" y="105" fill="#E4E4E7" font-family="Inter" font-size="12">Auth Service</text>
+            <rect x="260" y="140" width="120" height="60" rx="6" fill="#18181B" stroke="#71717A" stroke-width="1.5"/>
+            <text x="275" y="175" fill="#E4E4E7" font-family="Inter" font-size="12">Patient Data</text>
+            <rect x="260" y="210" width="120" height="60" rx="6" fill="#18181B" stroke="#71717A" stroke-width="1.5"/>
+            <text x="275" y="245" fill="#E4E4E7" font-family="Inter" font-size="12">Sync Stream</text>
+            <rect x="440" y="130" width="90" height="80" rx="8" fill="#27272A" stroke="#FFFFFF" stroke-width="1.5"/>
+            <text x="460" y="175" fill="#FFFFFF" font-family="Inter" font-size="12">Kafka Bus</text>
+          </svg>
+        `
+      },
+      {
+        title: "BankCore Kubernetes Migration",
+        stack: ["Go", "K8s", "Terraform", "AWS", "gRPC", "Prometheus"],
+        category: "Cloud Native & Enterprise Core Banking",
+        shortDesc: "Re-platforming sistem core perbankan dengan zero-downtime & auto-scaling multi-region.",
+        fullDesc: "Modernisasi sistem perbankan tradisional dengan merestrukturisasi backend berbeban tinggi ke klaster Kubernetes multi-region terkelola AWS EKS. Dilengkapi infrastruktur as code (Terraform), service mesh Istio mTLS berstandar PCI-DSS, serta pipeline deployment blue/green yang menjamin 99.999% ketersediaan layanan pada lonjakan 45.000 TPS.",
+        svgGraphic: `
+          <svg class="w-full h-full opacity-60" viewBox="0 0 600 338" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="338" fill="#0A0A0A"/>
+            <rect x="50" y="60" width="130" height="200" rx="10" fill="#141416" stroke="#52525B" stroke-width="1.5"/>
+            <text x="70" y="90" fill="#A1A1AA" font-family="Inter" font-size="12" font-weight="600">AWS MULTI-AZ</text>
+            <rect x="70" y="110" width="90" height="35" rx="4" fill="#27272A" stroke="#FFFFFF"/>
+            <text x="85" y="132" fill="#FFFFFF" font-family="Inter" font-size="11">Node Pool 1</text>
+            <rect x="70" y="160" width="90" height="35" rx="4" fill="#27272A" stroke="#FFFFFF"/>
+            <text x="85" y="182" fill="#FFFFFF" font-family="Inter" font-size="11">Node Pool 2</text>
+            <path d="M180 145 H240" stroke="#38BDF8" stroke-width="2" stroke-dasharray="3 3"/>
+            <rect x="240" y="80" width="140" height="150" rx="10" fill="#18181B" stroke="#38BDF8" stroke-width="2"/>
+            <circle cx="310" cy="130" r="28" stroke="#38BDF8" stroke-width="2"/>
+            <text x="282" y="136" fill="#FFFFFF" font-family="Inter" font-weight="700" font-size="14">K8s Core</text>
+            <text x="270" y="195" fill="#94A3B8" font-family="Inter" font-size="11">Auto-scale 45k TPS</text>
+            <path d="M380 145 H440" stroke="#38BDF8" stroke-width="2"/>
+            <rect x="440" y="95" width="110" height="120" rx="8" fill="#18181B" stroke="#71717A" stroke-width="1.5"/>
+            <text x="455" y="135" fill="#E4E4E7" font-family="Inter" font-size="12">Zero Downtime</text>
+            <text x="455" y="160" fill="#10B981" font-family="Inter" font-weight="700" font-size="13">99.999% SLA</text>
+            <text x="455" y="185" fill="#A1A1AA" font-family="Roboto" font-size="10">PCI-DSS Compliant</text>
+          </svg>
+        `
+      },
+      {
+        title: "Parkarejo",
+        stack: ["Figma", "UI/UX", "Design System", "Prototyping", "User Research"],
+        category: "Enterprise Logistics & Urban Mobility",
+        shortDesc: "Prototipe & design system sistem parkir digital untuk efisiensi mobilitas urban.",
+        fullDesc: "Parkarejo adalah purwarupa sistem manajemen pergudangan dan routing logistik terpadu yang dirancang melalui 4 fase riset etnografi pengguna lapangan. Menghadirkan antarmuka ultra-minimalis dengan ergonomi tinggi untuk operator terminal, mempercepat waktu input manifest pengiriman hingga 62% dengan angka kesalahan input mendekati nol.",
+        svgGraphic: `
+          <svg class="w-full h-full opacity-60" viewBox="0 0 600 338" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="338" fill="#0A0A0A"/>
+            <rect x="60" y="45" width="480" height="250" rx="10" stroke="#FFFFFF" stroke-width="2" fill="#121212"/>
+            <line x1="60" y1="95" x2="540" y2="95" stroke="#27272A" stroke-width="2"/>
+            <circle cx="85" cy="70" r="5" fill="#52525B"/>
+            <circle cx="105" cy="70" r="5" fill="#52525B"/>
+            <circle cx="125" cy="70" r="5" fill="#52525B"/>
+            <rect x="90" y="125" width="120" height="135" rx="6" fill="#1E1E24" stroke="#3F3F46" stroke-width="1"/>
+            <rect x="230" y="125" width="270" height="35" rx="4" fill="#27272A"/>
+            <rect x="230" y="175" width="270" height="35" rx="4" fill="#27272A"/>
+            <rect x="230" y="225" width="120" height="35" rx="4" fill="#FFFFFF"/>
+          </svg>
+        `
+      },
+      {
+        title: "NexaPay FinTech SuperApp",
+        stack: ["Figma", "Prototyping", "Usability Testing", "Design Tokens", "Micro-interactions"],
+        category: "Next-Gen Financial Application Design",
+        shortDesc: "Redesain end-to-end aplikasi perbankan digital generasi baru dengan peningkatan konversi transaksi 38%.",
+        fullDesc: "NexaPay adalah inisiatif restrukturisasi pengalaman pengguna (UX) untuk aplikasi keuangan dan payment gateway enterprise. Divalidasi melalui 50+ sesi usability testing mendalam dengan metrik SUS (System Usability Scale) 88.5, menghasilkan arsitektur informasi yang intuitif, zero-cognitive friction checkout, dan adopsi fitur investasi mikro yang melonjak hingga 38%.",
+        svgGraphic: `
+          <svg class="w-full h-full opacity-60" viewBox="0 0 600 338" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="600" height="338" fill="#0A0A0A"/>
+            <rect x="130" y="30" width="150" height="275" rx="20" stroke="#FFFFFF" stroke-width="2" fill="#121214"/>
+            <rect x="175" y="42" width="60" height="7" rx="3.5" fill="#3F3F46"/>
+            <rect x="150" y="65" width="110" height="55" rx="10" fill="#27272A" stroke="#71717A"/>
+            <text x="162" y="90" fill="#A1A1AA" font-family="Inter" font-size="9">Total Saldo Aktif</text>
+            <text x="162" y="108" fill="#FFFFFF" font-family="Inter" font-weight="700" font-size="12">Rp 248.500.000</text>
+            <circle cx="165" cy="145" r="14" fill="#27272A"/>
+            <circle cx="205" cy="145" r="14" fill="#FFFFFF"/>
+            <circle cx="245" cy="145" r="14" fill="#27272A"/>
+            <rect x="150" y="175" width="110" height="85" rx="8" fill="#18181B" stroke="#27272A"/>
+            
+            <rect x="320" y="55" width="180" height="225" rx="12" stroke="#52525B" stroke-width="1.5" fill="#141416"/>
+            <text x="340" y="90" fill="#FFFFFF" font-family="Inter" font-weight="700" font-size="14">Metrik Evaluasi UX</text>
+            <line x1="340" y1="105" x2="480" y2="105" stroke="#27272A" stroke-width="1.5"/>
+            <text x="340" y="130" fill="#A78BFA" font-family="Inter" font-size="12" font-weight="600">+38% Conversion</text>
+            <text x="340" y="155" fill="#A1A1AA" font-family="Roboto" font-size="11">SUS Score: 88.5 / 100</text>
+            <text x="340" y="180" fill="#A1A1AA" font-family="Roboto" font-size="11">Drop-off: Reduced 52%</text>
+            <rect x="340" y="210" width="140" height="35" rx="6" fill="#FFFFFF"/>
+            <text x="365" y="232" fill="#000000" font-family="Inter" font-weight="700" font-size="11">Lihat Design System</text>
+          </svg>
+        `
+      }
+    ];
+
+    // Modal State Functions
+    function openProjectModal(index) {
+      const project = projectsData[index];
+      if (!project) return;
+
+      document.getElementById('modalProjectTitle').textContent = project.title;
+      document.getElementById('modalProjectDesc').textContent = project.fullDesc;
+      document.getElementById('modalCategoryBadge').textContent = project.category.toUpperCase();
+      document.getElementById('modalGraphicContainer').innerHTML = project.svgGraphic;
+
+      // Render tech stack pills
+      const techStackContainer = document.getElementById('modalTechStack');
+      techStackContainer.innerHTML = '';
+      project.stack.forEach(tech => {
+        const badge = document.createElement('span');
+        badge.className = "px-3 py-1 rounded-full border border-gray-700 bg-neutral-800 text-xs font-inter font-medium text-gray-200";
+        badge.textContent = tech;
+        techStackContainer.appendChild(badge);
+      });
+
+      const modal = document.getElementById('projectModal');
+      const overlay = document.getElementById('modalOverlay');
+      const box = document.getElementById('modalBox');
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      // Trigger animations
+      requestAnimationFrame(() => {
+        overlay.classList.remove('opacity-0');
+        overlay.classList.add('opacity-100');
+        box.classList.remove('opacity-0', 'scale-95');
+        box.classList.add('opacity-100', 'scale-100');
+      });
+      lucide.createIcons();
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      const overlay = document.getElementById('modalOverlay');
+      const box = document.getElementById('modalBox');
+
+      overlay.classList.remove('opacity-100');
+      overlay.classList.add('opacity-0');
+      box.classList.remove('opacity-100', 'scale-100');
+      box.classList.add('opacity-0', 'scale-95');
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }, 250);
+    }
+
+    // Escape Key listener for closing modal
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeProjectModal();
+      }
+    });
+
+    // Form submission handler
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const submitBtn = document.getElementById('submitBtn');
+      const alertBox = document.getElementById('formSuccessAlert');
+
+      // Visual state indication
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-75');
+      submitBtn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Mengirimkan Detail...</span>
+      `;
+
+      setTimeout(() => {
+        alertBox.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-75');
+        submitBtn.innerHTML = `
+          <span>Kirim Pesan Pemesanan Jasa</span>
+          <i data-lucide="send" class="w-4 h-4"></i>
+        `;
+        document.getElementById('contactForm').reset();
+        lucide.createIcons();
+      }, 700);
+    }
+
+    // Filter projects dynamically
+    function filterProjects(category, activeBtn) {
+      const buttons = document.querySelectorAll('.project-filter-btn');
+      buttons.forEach(btn => {
+        btn.className = 'project-filter-btn px-5 py-2 rounded-full font-inter font-medium text-sm transition-all duration-200 bg-transparent border border-neutral-800 text-gray-400 hover:text-white hover:border-neutral-600';
+      });
+      if (activeBtn) {
+        activeBtn.className = 'project-filter-btn px-5 py-2 rounded-full font-inter font-medium text-sm transition-all duration-200 bg-white text-black shadow-sm';
+      }
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        if (category === 'all' || cardCategory === category) {
+          card.style.display = 'flex';
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(12px)';
+          requestAnimationFrame(() => {
+            card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          });
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Initialize Lucide icons on DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+
+
+</body></html>
