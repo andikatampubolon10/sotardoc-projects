@@ -1,0 +1,25 @@
+# Dependencies & build
+node_modules/
+.next/
+out/
+build/
+
+# Environment files
+.env*.local
+
+# Cache and local IDE
+.agent/
+.agents/
+.gemini/
+.claude/
+.codex/
+.impeccable/
+.opencode/
+
+# Logs & temp
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
