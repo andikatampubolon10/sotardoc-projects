@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-24T15:06:40Z",
+  "title": "Design System: Sotardoc",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Stark Signal White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#1a1a1a", "#333333", "#4d4d4d", "#666666", "#999999", "#cccccc", "#e6e6e6", "#ffffff"]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Stark Signal Hover",
+        "canonical": "#e5e5e5",
+        "tonalRamp": ["#1a1a1a", "#333333", "#4d4d4d", "#666666", "#999999", "#b3b3b3", "#cccccc", "#e5e5e5"]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Obsidian Void",
+        "canonical": "#080808",
+        "tonalRamp": ["#050505", "#080808", "#121212", "#1f1f1f", "#2e2e2e", "#3d3d3d", "#5c5c5c", "#7a7a7a"]
+      },
+      "surface-card": {
+        "role": "neutral",
+        "displayName": "Carbon Surface",
+        "canonical": "#0d0d0d",
+        "tonalRamp": ["#080808", "#0d0d0d", "#171717", "#262626", "#383838", "#4a4a4a", "#6b6b6b", "#8f8f8f"]
+      },
+      "surface-elevated": {
+        "role": "neutral",
+        "displayName": "Elevated Slate",
+        "canonical": "#18181b",
+        "tonalRamp": ["#0f0f10", "#18181b", "#27272a", "#3f3f46", "#52525b", "#71717a", "#a1a1aa", "#d4d4d8"]
+      },
+      "border-subtle": {
+        "role": "neutral",
+        "displayName": "Subtle Boundary",
+        "canonical": "#27272a",
+        "tonalRamp": ["#141416", "#27272a", "#3f3f46", "#52525b", "#71717a", "#a1a1aa", "#d4d4d8", "#e4e4e7"]
+      },
+      "border-hover": {
+        "role": "neutral",
+        "displayName": "Illuminated Boundary",
+        "canonical": "#3f3f46",
+        "tonalRamp": ["#1c1c1f", "#27272a", "#3f3f46", "#52525b", "#71717a", "#a1a1aa", "#d4d4d8", "#f4f4f5"]
+      },
+      "text-primary": {
+        "role": "neutral",
+        "displayName": "Signal White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#1a1a1a", "#333333", "#4d4d4d", "#666666", "#999999", "#cccccc", "#e6e6e6", "#ffffff"]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Signal Muted",
+        "canonical": "#a1a1aa",
+        "tonalRamp": ["#1f1f23", "#2e2e33", "#45454c", "#5f5f68", "#7a7a85", "#a1a1aa", "#c7c7cf", "#e8e8ed"]
+      },
+      "accent-neural": {
+        "role": "secondary",
+        "displayName": "Neural Emerald",
+        "canonical": "#34d399",
+        "tonalRamp": ["#064e3b", "#065f46", "#047857", "#059669", "#10b981", "#34d399", "#6ee7b7", "#a7f3d0"]
+      },
+      "accent-telemetry": {
+        "role": "secondary",
+        "displayName": "Telemetry Cyan",
+        "canonical": "#22d3ee",
+        "tonalRamp": ["#164e63", "#155e75", "#0e7490", "#0891b2", "#06b6d4", "#22d3ee", "#67e8f9", "#a5f3fc"]
+      },
+      "accent-design": {
+        "role": "tertiary",
+        "displayName": "Design Violet",
+        "canonical": "#a78bfa",
+        "tonalRamp": ["#4c1d95", "#5b21b6", "#6d28d9", "#7c3aed", "#8b5cf6", "#a78bfa", "#c4b5fd", "#ddd6fe"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero landmarks and high-impact title statements." },
+      "headline": { "displayName": "Headline", "purpose": "Major section headings and section anchors." },
+      "title": { "displayName": "Title", "purpose": "Project card headings and dialog modal titles." },
+      "body": { "displayName": "Body", "purpose": "Case study descriptions, value propositions, and form copy." },
+      "label": { "displayName": "Label", "purpose": "Navigation links, status badges, and uppercase action buttons." }
+    },
+    "shadows": [
+      {
+        "name": "glow-pulse",
+        "value": "0 0 18px rgba(255,255,255,0.12)",
+        "purpose": "Diffuse pulsing aura around the primary CTA button."
+      },
+      {
+        "name": "card-lift",
+        "value": "0 12px 32px rgba(255,255,255,0.06)",
+        "purpose": "Ambient white elevation aura on card hover."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-smooth",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Default timing curve for reveals, hover transforms, and modal boxes."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary CTA Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Magnetic high-contrast primary call-to-action button with subtle glow.",
+      "html": "<button class=\"ds-btn-primary\">KONSULTASI GRATIS</button>",
+      "css": ".ds-btn-primary { background: #ffffff; color: #080808; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 10px 20px; border-radius: 6px; border: none; cursor: pointer; transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 0 18px rgba(255,255,255,0.12); } .ds-btn-primary:hover { background: #e5e5e5; transform: scale(1.03); box-shadow: 0 0 28px rgba(255,255,255,0.25); } .ds-btn-primary:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Outline Card Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Full-width outline action button that sharply inverts on hover.",
+      "html": "<button class=\"ds-btn-outline\"><span>LIHAT DETAIL</span><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"/><polyline points=\"15 3 21 3 21 9\"/><line x1=\"10\" y1=\"14\" x2=\"21\" y2=\"3\"/></svg></button>",
+      "css": ".ds-btn-outline { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: #ffffff; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 10px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.8); cursor: pointer; transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-outline:hover { background: #ffffff; color: #080808; }"
+    },
+    {
+      "name": "Filter Category Pill",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Pill-shaped toggle button for filtering categories.",
+      "html": "<div style=\"display:flex;gap:8px;\"><button class=\"ds-filter-pill ds-filter-pill-active\">Semua</button><button class=\"ds-filter-pill\">AI / Machine Learning</button></div>",
+      "css": ".ds-filter-pill { background: #171717; color: #a1a1aa; border: 1px solid #374151; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; padding: 6px 16px; border-radius: 9999px; cursor: pointer; transition: all 0.2s ease; } .ds-filter-pill:hover { color: #ffffff; border-color: #4b5563; } .ds-filter-pill-active { background: #ffffff; color: #080808; font-weight: 600; border-color: #ffffff; }"
+    },
+    {
+      "name": "Project Portfolio Card",
+      "kind": "card",
+      "refersTo": "card-project",
+      "description": "Obsidian container with media inset, status pill, tags, and outline action.",
+      "html": "<div class=\"ds-card-project\"><div class=\"ds-card-media\"><div class=\"ds-card-badge\"><span class=\"ds-badge-dot\"></span><span>MODEL v1.4</span></div></div><h4 class=\"ds-card-title\">AgriFlow-ML</h4><div class=\"ds-card-tags\"><span>Python</span><span>RNN</span><span>React</span></div><p class=\"ds-card-desc\">Sistem ekosistem digital rantai pasok pertanian terintegrasi.</p></div>",
+      "css": ".ds-card-project { background: #0d0d0d; border: 1px solid #27272a; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease; } .ds-card-project:hover { transform: translateY(-8px); border-color: #3f3f46; box-shadow: 0 12px 32px rgba(255,255,255,0.06); } .ds-card-media { width: 100%; aspect-ratio: 16/9; background: #18181b; border: 1px solid #27272a; border-radius: 8px; margin-bottom: 20px; position: relative; overflow: hidden; } .ds-card-badge { position: absolute; bottom: 12px; left: 14px; display: flex; align-items: center; gap: 6px; font-family: monospace; font-size: 11px; color: #d1d5db; } .ds-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; } .ds-card-title { font-family: 'Inter', sans-serif; font-size: 20px; font-weight: 500; color: #ffffff; margin: 0 0 10px 0; } .ds-card-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; } .ds-card-tags span { font-family: 'Inter', sans-serif; font-size: 12px; color: #d1d5db; background: rgba(23,23,23,0.8); border: 1px solid #374151; padding: 2px 10px; border-radius: 9999px; } .ds-card-desc { font-family: 'Roboto', sans-serif; font-size: 14px; color: #9ca3af; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Form Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Disciplined dark input with sharp white focus ring.",
+      "html": "<div style=\"display:flex;flex-direction:column;gap:6px;width:100%;\"><label class=\"ds-input-label\">NAMA LENGKAP *</label><input type=\"text\" class=\"ds-input-field\" placeholder=\"Contoh: Budi Pratama\" /></div>",
+      "css": ".ds-input-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #d1d5db; } .ds-input-field { width: 100%; background: #171717; border: 1px solid #374151; border-radius: 8px; padding: 12px 16px; color: #ffffff; font-family: 'Roboto', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; } .ds-input-field::placeholder { color: #6b7280; } .ds-input-field:focus { border-color: #ffffff; box-shadow: 0 0 0 1px #ffffff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Precision Foundry",
+    "overview": "Sotardoc's design system embodies razor-sharp clarity, structural monochrome surfaces, and measured engineering rigor. Rooted in deep black obsidian tones, crisp 1-pixel borders, and subtle technical grid coordinates, it projects enterprise-grade credibility rather than consumer novelty. Every element communicates reliability, architectural discipline, and technological gravitas.\n\nThe visual atmosphere is deliberately restrained. Surfaces step gently outward through subtle shifts in luminance—from an obsidian canvas (#080808) to carbon cards (#0D0D0D) and elevated preview viewports (#18181B). Interactive elements respond with tactile precision: subtle magnetic lifts, deliberate border illumination, and calm ambient white glows that confirm action without visual hysteria.",
+    "keyCharacteristics": [
+      "Obsidian Architectural Layering: Depth is conveyed through precise luminance steps and delicate borders rather than heavy blur shadows.",
+      "Monochromatic Primacy: 95%+ of all surfaces remain stark black, carbon, and white; color is strictly reserved for live telemetry, model states, and category pills.",
+      "Engineered Typography: Technical headings in Inter paired with scannable, high-legibility body prose in Roboto and monospace telemetry tags.",
+      "Deliberate Restraint: High-density information delivered with calm spatial rhythm and zero visual bloat."
+    ],
+    "rules": [
+      {
+        "name": "The Monochromatic Authority Rule",
+        "body": "Over 95% of any viewport must consist exclusively of black, carbon, gray, and white. Saturated chromatic accents (Emerald, Cyan, Violet) are strictly forbidden on large backgrounds, banners, or decorative flourishes; they belong only to functional status indicators and category pill badges.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ghost Border Fallback Rule",
+        "body": "Every dark container resting against the canvas must possess a 1px border (#27272A). Pure edge-blending without a boundary is disallowed.",
+        "section": "colors"
+      },
+      {
+        "name": "The Technical Label Rule",
+        "body": "All navigational labels, action triggers, and eyebrow badges must use uppercase styling with positive letter-spacing (0.05em to 0.08em) to maintain crisp scannability across dense layouts.",
+        "section": "typography"
+      },
+      {
+        "name": "The Luminance Stacking Rule",
+        "body": "Never convey elevation purely with drop shadows. A higher layer must physically step up in surface luminance (#080808 canvas → #0D0D0D card container → #18181B inner asset well) before applying any ambient glow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve the stark monochromatic balance: let black, carbon, and white carry the interface weight.",
+      "Do wrap every elevated surface in a crisp 1px border (#27272A).",
+      "Do use uppercase typography with tracking (+0.05em to +0.08em) on all small metadata, labels, and action verbs.",
+      "Do restrict status accent dots (Emerald, Cyan, Violet) to functional categorization and live indicators.",
+      "Do use subtle, physics-based micro-interactions (magnetic button scaling, 1px underline transitions)."
+    ],
+    "donts": [
+      "Don't introduce saturated background gradients, rainbow hero glows, or generic purple SaaS palettes.",
+      "Don't use bubbly, exaggerated border-radii (>16px on structural cards) or playful cartoonish assets.",
+      "Don't float dark cards over dark backgrounds without a 1px boundary stroke.",
+      "Don't apply colored text to headings or large body copy; all primary text must remain white (#FFFFFF) or high-contrast gray (#A1A1AA).",
+      "Don't use heavy skeuomorphic drop shadows; depth must be built with luminance stepping and faint ambient blurs."
+    ]
+  }
+}

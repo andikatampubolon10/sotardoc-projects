@@ -10,6 +10,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        primary: "#ffffff",
+        "primary-hover": "#e5e5e5",
+        neutralBg: "#080808",
+        surfaceCard: "#0d0d0d",
+        surfaceElevated: "#18181b",
+        borderSubtle: "#27272a",
+        borderHover: "#3f3f46",
+        textPrimary: "#ffffff",
+        textMuted: "#a1a1aa",
+        accentNeural: "#34d399",
+        accentTelemetry: "#22d3ee",
+        accentDesign: "#a78bfa",
         deepBlack: "#080808",
         surfaceBlack: "#111111",
         cardBg: "#0d0d0d",

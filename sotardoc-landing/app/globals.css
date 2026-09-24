@@ -1,6 +1,19 @@
 @import "tailwindcss";
 
 @theme {
+  --color-primary: #ffffff;
+  --color-primary-hover: #e5e5e5;
+  --color-neutral-bg: #080808;
+  --color-surface-card: #0d0d0d;
+  --color-surface-elevated: #18181b;
+  --color-border-subtle: #27272a;
+  --color-border-hover: #3f3f46;
+  --color-text-primary: #ffffff;
+  --color-text-muted: #a1a1aa;
+  --color-accent-neural: #34d399;
+  --color-accent-telemetry: #22d3ee;
+  --color-accent-design: #a78bfa;
+
   --color-deepBlack: #080808;
   --color-surfaceBlack: #111111;
   --color-cardBg: #0d0d0d;
@@ -53,9 +66,18 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
 
 /* ─────────────────────────────────────────────
-   SELECTION
+   SELECTION & BROWSER SURFACES
 ───────────────────────────────────────────── */
-::selection { background-color: #ffffff; color: #000000; }
+::selection { background-color: #ffffff; color: #080808; }
+
+input, textarea {
+  caret-color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
 
 /* ─────────────────────────────────────────────
    MODAL TRANSITIONS
@@ -262,13 +284,15 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   bottom: -2px;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 1px;
   background: white;
-  transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .nav-link:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 /* ─────────────────────────────────────────────
@@ -296,13 +320,11 @@ h1, h2, h3, h4, h5, h6 {
 /* ─────────────────────────────────────────────
    HEADER LOGO BOUNCE
 ───────────────────────────────────────────── */
-@keyframes logoBounce {
-  0%, 100% { transform: scale(1); }
-  40%       { transform: scale(1.08); }
-  70%       { transform: scale(0.96); }
+.logo-box {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .logo-box:hover {
-  animation: logoBounce 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  transform: scale(1.05);
 }
 
 /* ─────────────────────────────────────────────
@@ -340,4 +362,114 @@ h1, h2, h3, h4, h5, h6 {
 }
 .btn-magnetic:active {
   transform: scale(0.97);
+}
+
+/* ─────────────────────────────────────────────
+   DESIGN SYSTEM UTILITIES (DESIGN.md)
+───────────────────────────────────────────── */
+.ds-btn-primary {
+  background-color: #ffffff;
+  color: #080808;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.12);
+  transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.ds-btn-primary:hover {
+  background-color: #e5e5e5;
+  transform: scale(1.03);
+  box-shadow: 0 0 28px rgba(255, 255, 255, 0.25);
+}
+.ds-btn-primary:active {
+  transform: scale(0.97);
+}
+
+.ds-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #ffffff;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ds-btn-outline:hover {
+  background-color: #ffffff;
+  color: #080808;
+}
+
+.ds-filter-pill {
+  background-color: #171717;
+  color: #a1a1aa;
+  border: 1px solid #374151;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.ds-filter-pill:hover {
+  color: #ffffff;
+  border-color: #4b5563;
+}
+.ds-filter-pill.active,
+.ds-filter-pill-active {
+  background-color: #ffffff;
+  color: #080808;
+  font-weight: 600;
+  border-color: #ffffff;
+}
+
+.ds-card-project {
+  background-color: #0d0d0d;
+  border: 1px solid #27272a;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.ds-card-project:hover {
+  transform: translateY(-8px);
+  border-color: #3f3f46;
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.06);
+}
+
+.ds-input-field {
+  width: 100%;
+  background-color: #171717;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #ffffff;
+  font-family: var(--font-roboto), sans-serif;
+  font-size: 14px;
+  outline: none;
+  caret-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.ds-input-field::placeholder {
+  color: #9ca3af;
+}
+.ds-input-field:focus {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 1px #ffffff;
 }

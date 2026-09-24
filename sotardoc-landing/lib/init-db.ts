@@ -161,7 +161,7 @@ export async function initDatabase(): Promise<{ mode: "mysql" | "local"; message
       console.log("✅ Admin default berhasil dibuat di MySQL:", defaultUser);
     }
 
-    // 5. Seed default projects if empty
+    // 5. Seed default projects and local-store custom projects if empty
     const projectRows = await query<any[]>("SELECT id FROM projects LIMIT 1");
     if (!projectRows || projectRows.length === 0) {
       for (let i = 0; i < defaultProjects.length; i++) {
@@ -185,11 +185,44 @@ export async function initDatabase(): Promise<{ mode: "mysql" | "local"; message
             JSON.stringify(p.stack),
             "",
             1,
-            i,
+            i + 1,
           ]
         );
       }
-      console.log(`✅ ${defaultProjects.length} proyek bawaan berhasil di-seed ke MySQL.`);
+
+      // Check if user added custom projects in local store (e.g. hyrjy)
+      const localStore = getLocalStore();
+      const customProjects = (localStore.projects || []).filter(
+        (lp: any) => !defaultProjects.some((dp) => String(dp.id) === String(lp.id))
+      );
+
+      for (const cp of customProjects) {
+        await query(
+          `INSERT INTO projects (
+            id, title, category, image_url, summary, description, client, duration,
+            architecture, metrics, tech_stack, live_url, is_active, sort_order
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          ON DUPLICATE KEY UPDATE title=VALUES(title)`,
+          [
+            String(cp.id),
+            cp.title || "Untitled",
+            cp.category || "General",
+            cp.image_url || "",
+            cp.summary || "",
+            cp.description || "",
+            cp.client || "Client",
+            cp.duration || "3 Bulan",
+            typeof cp.architecture === "string" ? cp.architecture : JSON.stringify(cp.architecture || []),
+            typeof cp.metrics === "string" ? cp.metrics : JSON.stringify(cp.metrics || []),
+            typeof cp.tech_stack === "string" ? cp.tech_stack : JSON.stringify(cp.tech_stack || []),
+            cp.live_url || "",
+            cp.is_active ?? 1,
+            cp.sort_order ?? 0,
+          ]
+        );
+      }
+
+      console.log(`✅ ${defaultProjects.length} proyek bawaan + ${customProjects.length} proyek kustom berhasil di-seed ke MySQL.`);
     }
 
     activeMode = "mysql";
