@@ -383,7 +383,7 @@ export default function AdminProjectsPage() {
           <div className="bg-[#111111] border border-[#27272A] rounded-xl p-6 max-w-sm w-full space-y-4">
             <h3 className="font-inter font-bold text-lg text-white">Hapus Proyek Ini?</h3>
             <p className="font-roboto text-xs text-gray-400 leading-relaxed">
-              Tindakan ini tidak dapat dibatalkan. Proyek akan dihapus secara permanen dari portofolio landing page.
+              Tindakan ini tidak dapat diibatalkan. Proyek akan dihapus secara permanen dari portofolio landing page.
             </p>
             <div className="flex justify-end gap-3 pt-2">
               <button
