@@ -46,6 +46,7 @@ jobs:
           cp sotardoc-landing/package.json deploy/package.json
           cp sotardoc-landing/package-lock.json deploy/package-lock.json || true
           cp sotardoc-landing/server.js deploy/server.js
+          cp sotardoc-landing/app.js deploy/app.js || true
           # Sinyal restart otomatis untuk Phusion Passenger (cPanel Node.js App)
           mkdir -p deploy/tmp
           touch deploy/tmp/restart.txt

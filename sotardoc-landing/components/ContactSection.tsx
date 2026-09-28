@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Send, ChevronDown, CheckCircle } from "lucide-react";
+import { Mail, Send, ChevronDown, CheckCircle, MapPin, Clock, ShieldCheck, MessageSquare, PhoneCall } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 interface FormState {
@@ -85,31 +85,115 @@ export default function ContactSection() {
 
   return (
     <section id="kontak" className="mt-24 py-20 px-6 max-w-7xl mx-auto">
-      <div className="max-w-3xl mx-auto">
+      {/* Header */}
+      <div ref={headerRef} className="reveal text-center mb-16 max-w-3xl mx-auto">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-800 bg-neutral-900 text-xs font-inter font-medium text-gray-300 mb-4">
+          <Mail className="w-3.5 h-3.5" aria-hidden />
+          <span className="text-shimmer">Konsultasi Arsitektur &amp; Penawaran Jasa</span>
+        </div>
+        <h2 className="font-inter text-3xl md:text-4xl text-white tracking-tight mb-4 font-normal">
+          Hubungi Tim Engineering Kami
+        </h2>
+        <p className="font-roboto text-gray-400 text-base leading-relaxed max-w-xl mx-auto font-normal">
+          Diskusikan roadmap teknologi, optimasi infrastruktur cloud, atau pipeline AI Anda langsung dengan senior architect Sotardoc.
+        </p>
+      </div>
 
-        {/* Header */}
-        <div ref={headerRef} className="reveal text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-800 bg-neutral-900 text-xs font-inter font-medium text-gray-300 mb-4">
-            <Mail className="w-3.5 h-3.5" aria-hidden />
-            <span className="text-shimmer">Konsultasi Proyek &amp; Penawaran Jasa</span>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-6xl mx-auto">
+        {/* Left Column: Direct Corporate Credentials & Trust */}
+        <div className="lg:col-span-5 space-y-6">
+          <div className="bg-[#0D0D0D] border border-[#27272A] rounded-2xl p-6 md:p-8 space-y-6">
+            <h3 className="font-inter text-xl text-white font-medium tracking-tight">
+              Kanal Komunikasi Resmi
+            </h3>
+            <p className="font-roboto text-xs text-gray-400 leading-relaxed">
+              Kami memprioritaskan komunikasi langsung tanpa perantara sales agensi tradisional. Anda akan terhubung dengan insinyur yang memahami kode dan arsitektur sistem.
+            </p>
+
+            <div className="space-y-4 pt-2">
+              {/* Email */}
+              <div className="flex items-start gap-3.5 p-3 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-600 transition-colors">
+                <div className="w-9 h-9 rounded-lg bg-neutral-800 flex items-center justify-center flex-shrink-0 text-white">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="font-inter text-[11px] uppercase tracking-wider text-gray-400 font-semibold">Email Korespondensi</div>
+                  <a href="mailto:contact@sotardoc.com" className="font-mono text-sm text-white hover:text-gray-300 font-medium transition-colors">
+                    contact@sotardoc.com
+                  </a>
+                  <div className="font-roboto text-[11px] text-gray-500">Proposal teknis &amp; dokumen tender (RFP)</div>
+                </div>
+              </div>
+
+              {/* WhatsApp Direct */}
+              <a
+                href="https://wa.me/6281290104421?text=Halo%20Tim%20Sotardoc,%20kami%20ingin%20berkonsultasi%20mengenai%20proyek%20sistem%20perusahaan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3.5 p-3 rounded-xl bg-neutral-900/60 border border-neutral-800 hover:border-emerald-500/50 hover:bg-emerald-950/10 transition-colors group cursor-pointer"
+              >
+                <div className="w-9 h-9 rounded-lg bg-emerald-950/60 border border-emerald-800/60 flex items-center justify-center flex-shrink-0 text-emerald-400 group-hover:scale-105 transition-transform">
+                  <MessageSquare className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="font-inter text-[11px] uppercase tracking-wider text-emerald-400 font-semibold flex items-center gap-1.5">
+                    <span>WhatsApp Langsung</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
+                  </div>
+                  <div className="font-mono text-sm text-white font-medium group-hover:text-emerald-300 transition-colors">
+                    +62 812-9010-4421
+                  </div>
+                  <div className="font-roboto text-[11px] text-gray-500">Konsultasi cepat &amp; jadwal panggilan video</div>
+                </div>
+              </a>
+
+              {/* Office Location */}
+              <div className="flex items-start gap-3.5 p-3 rounded-xl bg-neutral-900/60 border border-neutral-800">
+                <div className="w-9 h-9 rounded-lg bg-neutral-800 flex items-center justify-center flex-shrink-0 text-white">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="font-inter text-[11px] uppercase tracking-wider text-gray-400 font-semibold">Engineering Hub</div>
+                  <div className="font-roboto text-sm text-white font-normal">
+                    Jakarta Selatan, DKI Jakarta
+                  </div>
+                  <div className="font-roboto text-[11px] text-gray-500">Indonesia · Melayani Klien Nasional &amp; Regional</div>
+                </div>
+              </div>
+
+              {/* SLA & NDA */}
+              <div className="flex items-start gap-3.5 p-3 rounded-xl bg-neutral-900/60 border border-neutral-800">
+                <div className="w-9 h-9 rounded-lg bg-neutral-800 flex items-center justify-center flex-shrink-0 text-white">
+                  <Clock className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="font-inter text-[11px] uppercase tracking-wider text-gray-400 font-semibold">SLA Evaluasi Teknis</div>
+                  <div className="font-roboto text-sm text-white font-normal">
+                    Maksimal 1×24 Jam Kerja
+                  </div>
+                  <div className="font-roboto text-[11px] text-gray-500">Senin – Jumat, 08:30 – 18:00 WIB</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-neutral-800 text-[11px] font-roboto text-gray-400 flex items-start gap-2">
+              <ShieldCheck className="w-4 h-4 text-white flex-shrink-0 mt-0.5" />
+              <span>
+                <strong>Jaminan Kerahasiaan (NDA):</strong> Seluruh data arsitektur dan skema bisnis yang Anda bagikan dilindungi perjanjian kerahasiaan ketat sebelum NDA resmi ditandatangani.
+              </span>
+            </div>
           </div>
-          <h2 className="font-inter text-3xl md:text-4xl text-white tracking-tight mb-4 font-normal">
-            Hubungi Kami untuk Pemesanan Jasa
-          </h2>
-          <p className="font-roboto text-gray-400 text-base leading-relaxed max-w-xl mx-auto font-normal">
-            Diskusikan tantangan teknologi organisasi Anda bersama tim engineering
-            Sotardoc. Kami akan merespon dalam waktu maksimal 1x24 jam kerja.
-          </p>
         </div>
 
-        {/* Form with animated gradient border */}
-        <form
-          ref={formRef}
-          id="contact-form"
-          onSubmit={handleSubmit}
-          className="reveal animated-border-card bg-[#0d0d0d] rounded-2xl p-8 md:p-10 shadow-2xl relative"
-        >
-          <div className="space-y-6">
+        {/* Right Column: Form with animated gradient border */}
+        <div className="lg:col-span-7">
+          <form
+            ref={formRef}
+            id="contact-form"
+            onSubmit={handleSubmit}
+            className="reveal animated-border-card bg-[#0d0d0d] rounded-2xl p-8 md:p-10 shadow-2xl relative"
+          >
+            <div className="space-y-6">
 
             {/* Nama Lengkap */}
             <div>
@@ -277,6 +361,7 @@ export default function ContactSection() {
             </p>
           </div>
         </form>
+      </div>
       </div>
     </section>
   );

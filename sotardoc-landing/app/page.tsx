@@ -1,6 +1,9 @@
 import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
 import PortfolioSection from "@/components/PortfolioSection";
 import ValueSection from "@/components/ValueSection";
+import InsightsSection from "@/components/InsightsSection";
+import FounderNoteSection from "@/components/FounderNoteSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
@@ -30,8 +33,11 @@ export default function Home() {
       {/* Content above all backgrounds */}
       <div className="relative z-10">
         <Header />
+        <HeroSection />
         <PortfolioSection />
         <ValueSection />
+        <InsightsSection />
+        <FounderNoteSection />
         <ContactSection />
         <Footer />
       </div>

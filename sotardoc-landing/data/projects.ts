@@ -19,12 +19,12 @@ export const projects: Project[] = [
     stack: ["Python", "RNN", "React", "TensorFlow", "FastAPI"],
     filterCategory: "ai",
     category: "Machine Learning & Smart Agriculture",
-    badgeLabel: "MODEL-PREDIKSI v2.4",
+    badgeLabel: "Prediksi Panen Real-Time",
     badgeColor: "emerald",
     shortDesc:
-      "Sistem ekosistem digital rantai pasok pertanian (Machine Learning).",
+      "Sistem pemantauan & estimasi rantai pasok pangan yang memangkas risiko pembusukan hasil panen.",
     fullDesc:
-      "AgriFlow-ML adalah platform berbasis kecerdasan buatan terapan yang memprediksi fluktuasi panen dan optimasi distribusi komoditas pangan secara real-time. Dengan memanfaatkan arsitektur Recurrent Neural Network (RNN) serta integrasi visualisasi data React berkecepatan tinggi, sistem ini memangkas tingkat pembusukan hasil tani sebesar 34% pada fase distribusi antar-provinsi.",
+      "AgriFlow-ML dikembangkan untuk konsorsium distribusi pangan dalam memprediksi fluktuasi panen dan merencanakan rute logistik dingin secara real-time. Dengan arsitektur Recurrent Neural Network (RNN) dan dasbor interaktif, sistem ini berhasil memangkas tingkat pembusukan hasil tani hingga 34% pada rute distribusi antar-provinsi.",
     svgGraphicCard: `<svg class="w-full h-full opacity-35 transition-transform duration-500 group-hover:scale-105" fill="none" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
       <path d="M20 140 C80 60, 160 160, 240 80 L300 110" stroke="#FFFFFF" stroke-dasharray="4 4" stroke-width="2"></path>
       <circle cx="80" cy="95" fill="#FFFFFF" r="5"></circle>
@@ -51,12 +51,12 @@ export const projects: Project[] = [
     stack: ["PyTorch", "FastAPI", "OpenCV", "Docker", "ONNX"],
     filterCategory: "ai",
     category: "Computer Vision & Identity Fraud Detection",
-    badgeLabel: "BIOMETRIC FAST-INFERENCE",
+    badgeLabel: "KYC Liveness <450ms",
     badgeColor: "emerald",
     shortDesc:
-      "Ekstraksi identitas otomatis & verifikasi biometrik fraud detection berkecepatan sub-detik.",
+      "Verifikasi identitas instan dan deteksi keaslian wajah untuk pendaftaran nasabah fintech.",
     fullDesc:
-      "VisionScan OCR & KYC merupakan pipeline computer vision cerdas untuk ekstraksi dokumen identitas nasional (KTP/Passport) dan pencocokan biometrik wajah secara instan. Menggunakan model deep learning terkuantisasi (ONNX Runtime) yang memproses inferensi dalam <450ms dengan akurasi pengenalan pola teks dan liveness detection mencapai 99.2%, mengurangi fraud onboarding hingga 85%.",
+      "VisionScan memecahkan masalah antrean verifikasi manual pada layanan perbankan digital melalui pipeline ekstraksi KTP/Paspor otomatis dan pencocokan biometrik wajah. Didukung kuantisasi ONNX Runtime, inferensi tuntas dalam tempo <450ms dengan akurasi 99.2%, menurunkan angka penipuan identitas hingga 85%.",
     svgGraphicCard: `<svg class="w-full h-full opacity-35 transition-transform duration-500 group-hover:scale-105" fill="none" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
       <rect fill="#121212" height="120" rx="6" stroke="#FFFFFF" stroke-width="1.5" width="180" x="70" y="30"></rect>
       <rect fill="#27272A" height="55" rx="3" stroke="#71717A" width="45" x="85" y="45"></rect>
@@ -93,12 +93,12 @@ export const projects: Project[] = [
     stack: ["Node.js", "Microservices", "Docker", "Kafka", "PostgreSQL"],
     filterCategory: "cloud",
     category: "Healthcare Infrastructure Migration",
-    badgeLabel: "MICROSERVICES MIGRATION",
+    badgeLabel: "Arsitektur Layanan Kesehatan",
     badgeColor: "cyan",
     shortDesc:
-      "Migrasi arsitektur monolitik untuk sistem deteksi awal Posyandu skala nasional.",
+      "Modernisasi sistem pendataan Posyandu nasional dengan kapabilitas sinkronisasi data offline.",
     fullDesc:
-      "MediTrack merupakan perombakan infrastruktur menyeluruh dari sistem legacy menjadi arsitektur microservices terdistribusi. Didesain untuk mengakomodasi lebih dari 12.000 titik Posyandu pedesaan dengan toleransi latensi jaringan rendah dan offline-sync capability, memungkinkan deteksi dini stunting dan pemantauan gizi anak secara akurat tanpa bottleneck server.",
+      "MediTrack merestrukturisasi sistem pemantauan gizi anak dari monolitik lama ke arsitektur microservices terdesentralisasi. Melayani lebih dari 12.000 titik Posyandu dengan sinkronisasi data offline ketika konektivitas sinyal terbatas di pelosok daerah, memastikan pencatatan tumbuh kembang anak tidak terputus.",
     svgGraphicCard: `<svg class="w-full h-full opacity-35 transition-transform duration-500 group-hover:scale-105" fill="none" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
       <rect fill="#27272A" height="70" rx="4" stroke="#FFFFFF" stroke-width="1.5" width="60" x="30" y="55"></rect>
       <rect fill="#18181b" height="45" rx="4" stroke="#A1A1AA" stroke-width="1.5" width="60" x="130" y="35"></rect>
@@ -127,12 +127,12 @@ export const projects: Project[] = [
     stack: ["Go", "K8s", "Terraform", "AWS", "gRPC", "Prometheus"],
     filterCategory: "cloud",
     category: "Cloud Native & Enterprise Core Banking",
-    badgeLabel: "ZERO-DOWNTIME RE-PLATFORM",
+    badgeLabel: "Zero-Downtime Migration",
     badgeColor: "cyan",
     shortDesc:
-      "Re-platforming sistem core perbankan dengan zero-downtime & auto-scaling multi-region.",
+      "Modernisasi sistem inti perbankan ke kluster Kubernetes dengan ketersediaan tinggi.",
     fullDesc:
-      "Modernisasi sistem perbankan tradisional dengan merestrukturisasi backend berbeban tinggi ke klaster Kubernetes multi-region terkelola AWS EKS. Dilengkapi infrastruktur as code (Terraform), service mesh Istio mTLS berstandar PCI-DSS, serta pipeline deployment blue/green yang menjamin 99.999% ketersediaan layanan pada lonjakan 45.000 TPS.",
+      "Mentransformasikan sistem perbankan tradisional ke infrastruktur cloud-native modern berbasis AWS EKS. Dilengkapi pendekatan Infrastructure-as-Code (Terraform) dan implementasi zero-downtime blue/green deployment, menjamin operasional perbankan tetap 99.999% andal di saat lonjakan transaksi hari raya.",
     svgGraphicCard: `<svg class="w-full h-full opacity-35 transition-transform duration-500 group-hover:scale-105" fill="none" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
       <rect fill="#18181B" height="120" rx="6" stroke="#71717A" stroke-width="1.5" width="75" x="25" y="30"></rect>
       <rect fill="#27272A" height="20" rx="3" stroke="#FFFFFF" stroke-width="1" width="55" x="35" y="45"></rect>

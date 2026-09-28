@@ -13,19 +13,22 @@ export default function Header() {
         </a>
 
         {/* Nav with underline draw */}
-        <nav className="hidden md:flex items-center space-x-8 text-sm font-inter font-medium text-gray-300">
-          {["Proyek", "Layanan", "Tentang Kami", "Kontak"].map((label, i) => {
-            const hrefs = ["#proyek", "#layanan", "#keunggulan", "#kontak"];
-            return (
-              <a
-                key={label}
-                href={hrefs[i]}
-                className="nav-link hover:text-white transition-colors duration-200"
-              >
-                {label}
-              </a>
-            );
-          })}
+        <nav className="hidden md:flex items-center space-x-7 text-sm font-inter font-medium text-gray-300">
+          {[
+            { label: "Proyek", href: "#proyek" },
+            { label: "Layanan", href: "#layanan" },
+            { label: "Insights", href: "#insights" },
+            { label: "Filosofi", href: "#filosofi" },
+            { label: "Kontak", href: "#kontak" },
+          ].map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="nav-link hover:text-white transition-colors duration-200"
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         {/* CTA with glow pulse */}
