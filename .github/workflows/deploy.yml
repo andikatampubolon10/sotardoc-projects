@@ -62,4 +62,7 @@ jobs:
           timeout: 120000
           server-dir: ${{ secrets.FTP_DESTINATION || 'sotardoc/' }}
           local-dir: ./deploy/
+          protocol: ftp
+          port: 21
+          timeout: 60000
           dangerous-clean-slate: false
