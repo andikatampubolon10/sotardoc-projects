@@ -59,7 +59,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_DESTINATION || 'sotardoc/' }}
           local-dir: ./deploy/
-          port: ${{ secrets.FTP_PORT || 21 }}
-          protocol: ${{ secrets.FTP_PROTOCOL || 'ftp' }}
-          timeout: 120000
           dangerous-clean-slate: false
